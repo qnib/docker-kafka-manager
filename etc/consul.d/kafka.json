@@ -1,0 +1,14 @@
+{
+  "services": [
+    {
+        "id": "kafka-manager",
+        "name": "kafka-manager",
+        "tags": [],
+        "port": 9000,
+        "checks": [{
+            "script": "nmap 127.0.0.1 -p 9000|grep open",
+            "interval": "10s"
+        }]
+    }
+  ]
+}

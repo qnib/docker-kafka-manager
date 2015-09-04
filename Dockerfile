@@ -21,3 +21,4 @@ RUN cd /opt/ && \
     mv /opt/kafka-manager-1.2.7 /opt/kafka-manager/
 ADD etc/supervisord.d/kafka-manager.ini /etc/supervisord.d/
 ADD opt/qnib/kafka-manager/bin/start_kafka-manager.sh /opt/qnib/kafka-manager/bin/
+ADD etc/consul.d/kafka.json /etc/consul.d/
