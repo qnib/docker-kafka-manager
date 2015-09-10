@@ -22,3 +22,4 @@ RUN cd /opt/ && \
 ADD etc/supervisord.d/kafka-manager.ini /etc/supervisord.d/
 ADD opt/qnib/kafka-manager/bin/start_kafka-manager.sh /opt/qnib/kafka-manager/bin/
 ADD etc/consul.d/kafka.json /etc/consul.d/
+ADD conf/application.conf /opt/kafka-manager/conf/
