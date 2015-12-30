@@ -2,7 +2,7 @@ FROM qnib/java8
 
 
 ENV SCALA_VERSION=2.11.7 \
-    KMGR_VER=1.2.7
+    KMGR_VER=1.3.0.4
 RUN \
   curl -fsL http://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz |tar xzf - -C /opt/ && \
   echo >> /root/.bashrc && \
@@ -16,9 +16,9 @@ RUN curl -fsL https://github.com/yahoo/kafka-manager/archive/${KMGR_VER}.zip |bs
     mv /opt/kafka-manager-${KMGR_VER} /opt/kafka-manager/
 RUN cd /opt/kafka-manager/ && sbt clean dist
 RUN cd /opt/ && \
-    unzip /opt/kafka-manager/target/universal/kafka-manager-1.2.7.zip && \
+    unzip /opt/kafka-manager/target/universal/kafka-manager-${KMGR_VER}.zip && \
     rm -rf /opt/kafka-manager/ && \
-    mv /opt/kafka-manager-1.2.7 /opt/kafka-manager/
+    mv /opt/kafka-manager-${KMGR_VER} /opt/kafka-manager/
 ADD etc/supervisord.d/kafka-manager.ini /etc/supervisord.d/
 ADD opt/qnib/kafka-manager/bin/start_kafka-manager.sh /opt/qnib/kafka-manager/bin/
 ADD etc/consul.d/kafka.json /etc/consul.d/
