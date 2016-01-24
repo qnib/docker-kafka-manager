@@ -1,4 +1,4 @@
-FROM qnib/java8
+FROM qnib/java8:cos7
 
 
 ENV SCALA_VERSION=2.11.7 \
@@ -10,7 +10,6 @@ RUN \
   echo >> /root/.bashrc && \
   echo 'export PATH=/opt/scala-$SCALA_VERSION/bin:$PATH' >> /root/.bashrc
 
-RUN exit 1
 # Install sbt
 RUN curl -o /etc/yum.repos.d/bintray-sbt-rpm.repo  https://bintray.com/sbt/rpm/rpm
 
