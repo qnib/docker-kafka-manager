@@ -17,7 +17,9 @@ RUN yum install -y bsdtar sbt
 Run yum install -y java-1.8.0-openjdk-devel
 RUN curl -fsL https://github.com/yahoo/kafka-manager/archive/${KMGR_VER}.zip |bsdtar xf - -C /opt/ && \
     mv /opt/kafka-manager-${KMGR_VER} /opt/kafka-manager/
-RUN cd /opt/kafka-manager/ && sbt clean dist
+RUN cd /opt/kafka-manager/ && \
+    echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt && \
+    sbt clean dist
 RUN cd /opt/ && \
     unzip /opt/kafka-manager/target/universal/kafka-manager-${KMGR_VER}.zip && \
     rm -rf /opt/kafka-manager/ && \
