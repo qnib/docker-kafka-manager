@@ -6,7 +6,7 @@
         "tags": [],
         "port": 9000,
         "checks": [{
-            "script": "nmap 127.0.0.1 -p 9000|grep open",
+            "script": "/opt/qnib/kafka/manager/bin/healthcheck.sh",
             "interval": "10s"
         }]
     }

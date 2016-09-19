@@ -7,6 +7,8 @@ RUN wget -qO /tmp/kafka-manager_${KM_VER}_all.deb https://github.com/qnib/kafka-
  && dpkg -i /tmp/kafka-manager_${KM_VER}_all.deb \
  && rm -f /tmp/kafka-manager_${KM_VER}_all.deb
 ADD etc/supervisord.d/kafka-manager.ini /etc/supervisord.d/
-ADD opt/qnib/kafka/manager/bin/start.sh /opt/qnib/kafka/manager/bin/
-ADD etc/consul.d/kafka.json /etc/consul.d/
+ADD opt/qnib/kafka/manager/bin/start.sh \
+    opt/qnib/kafka/manager/bin/healthcheck.sh \
+    /opt/qnib/kafka/manager/bin/
+ADD etc/consul.d/kafka-manager.json /etc/consul.d/
 ADD etc/consul-templates/kafka/manager/application.conf.ctmpl /etc/consul-templates/kafka/manager/
